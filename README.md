@@ -1,6 +1,6 @@
 # YouTube 实时字幕翻译器
 
-> Opus 4.6 vibecoding 项目 - YouTube 英文字幕实时翻译成中文的浏览器扩展
+> 基于Claude Opus 4.6 coding项目 - YouTube 英文字幕实时翻译成中文的浏览器扩展
 
 ![效果演示](./screenshot.png)
 
