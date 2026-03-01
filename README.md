@@ -1,163 +1,157 @@
-# YouTube Real-time Subtitle Translator
+# YouTube 实时字幕翻译器
 
-[中文文档](README_CN.md)
+> Opus 4.6 vibecoding 项目 - YouTube 英文字幕实时翻译成中文的浏览器扩展
 
-A lightweight browser extension that translates YouTube subtitles in real-time to Chinese or other languages.
+![效果演示](./screenshot.png)
 
-![Demo](https://via.placeholder.com/800x400?text=Demo+Screenshot)
+## ✨ 功能特性
 
-## ✨ Features
+- 🌐 **实时翻译** - 自动检测并翻译 YouTube 字幕，几乎零延迟
+- 🎯 **双语字幕** - 同时显示原文和翻译字幕，方便对照学习
+- 💾 **智能缓存** - 缓存翻译结果，避免重复翻译
+- 🎨 **原生样式** - 完美融入 YouTube 界面，无违和感
+- 🌍 **多语言支持** - 支持翻译到中文、日文、韩文等 8+ 种语言
 
-- 🌐 **Real-time Translation** - Automatically detects and translates YouTube subtitles
-- 🎯 **Dual Subtitles** - Original and translated subtitles displayed simultaneously
-- 🚀 **Zero Latency** - Uses efficient translation API with almost no delay
-- 💾 **Smart Caching** - Caches translation results to avoid redundant translations
-- 🎨 **Native Styling** - Perfectly integrated into YouTube interface
-- 🌍 **Multi-language Support** - Supports translation to 8+ languages
+## 📦 安装方法
 
-## 📦 Installation
+### Chrome / Edge 浏览器
 
-### Chrome / Edge
+1. 下载或克隆本仓库
+2. 打开浏览器，访问 `chrome://extensions/`
+3. 右上角开启 **"开发者模式"**
+4. 点击 **"加载已解压的扩展程序"**
+5. 选择本扩展文件夹
+6. 完成！扩展图标会出现在工具栏
 
-1. Download or clone this repository
-2. Open your browser and navigate to `chrome://extensions/`
-3. Enable "Developer mode" in the top right corner
-4. Click "Load unpacked extension"
-5. Select the `youtube-translator-extension` folder
-6. Done! The extension icon will appear in your toolbar
+### Firefox 浏览器
 
-### Firefox
+1. 下载或克隆本仓库
+2. 打开浏览器，访问 `about:debugging#/runtime/this-firefox`
+3. 点击 **"临时载入附加组件"**
+4. 选择扩展文件夹中的 `manifest.json` 文件
+5. 完成！
 
-1. Download or clone this repository
-2. Open your browser and navigate to `about:debugging#/runtime/this-firefox`
-3. Click "Load Temporary Add-on"
-4. Select the `manifest.json` file in the extension folder
-5. Done!
+## 🎮 使用方法
 
-## 🎮 Usage
+1. **打开 YouTube 视频**
+   - 确保视频有字幕（自动生成或手动上传）
+   - 点击 CC 按钮开启字幕
 
-1. **Open a YouTube video**
-   - Make sure the video has subtitles (auto-generated or manual)
-   - Enable subtitles by clicking the CC button
+2. **查看翻译**
+   - 翻译后的字幕会自动显示在原文字幕上方
+   - 原文和译文同时显示，方便对照
 
-2. **View translations**
-   - Translated subtitles will automatically appear above the original subtitles
-   - Both original and translated text are displayed for easy comparison
+3. **调整设置**
+   - 点击浏览器工具栏的扩展图标
+   - 可开关翻译功能
+   - 可选择目标语言（默认：简体中文）
 
-3. **Adjust settings**
-   - Click the extension icon in your browser toolbar
-   - Toggle translation on/off
-   - Select target language (default: Simplified Chinese)
+## ⚙️ 支持的语言
 
-## ⚙️ Supported Languages
+- 🇨🇳 简体中文
+- 🇹🇼 繁体中文
+- 🇺🇸 英文
+- 🇯🇵 日文
+- 🇰🇷 韩文
+- 🇪🇸 西班牙文
+- 🇫🇷 法文
+- 🇩🇪 德文
 
-- 🇨🇳 Simplified Chinese
-- 🇹🇼 Traditional Chinese
-- 🇺🇸 English
-- 🇯🇵 Japanese
-- 🇰🇷 Korean
-- 🇪🇸 Spanish
-- 🇫🇷 French
-- 🇩🇪 German
+## 🔧 技术实现
 
-## 🔧 Technical Implementation
+- **翻译引擎**: Google Translate API（免费）
+- **字幕检测**: MutationObserver 实时监听 DOM 变化
+- **缓存机制**: JavaScript Map 缓存翻译结果
+- **样式适配**: 完美适配 YouTube 原生字幕样式
 
-- **Translation Engine**: Google Translate API (free)
-- **Subtitle Detection**: MutationObserver for real-time DOM monitoring
-- **Caching**: JavaScript Map for translation result caching
-- **Styling**: Perfectly adapted to YouTube's native subtitle style
-
-## 📝 File Structure
+## 📝 文件结构
 
 ```
-youtube-translator-extension/
-├── manifest.json       # Extension configuration
-├── content.js          # Core translation logic
-├── styles.css          # Subtitle styling
-├── popup.html          # Settings interface
-├── popup.js            # Settings logic
-├── background.js       # Background service
-├── icons/              # Extension icons
+youtube-chinese-subtitle/
+├── manifest.json       # 扩展配置文件
+├── content.js          # 核心翻译逻辑
+├── styles.css          # 字幕样式
+├── popup.html          # 设置界面
+├── popup.js            # 设置逻辑
+├── background.js       # 后台服务
+├── icons/              # 扩展图标
 │   ├── icon16.png
 │   ├── icon48.png
 │   └── icon128.png
-└── README.md           # Documentation
+├── screenshot.png      # 效果截图
+└── README.md           # 说明文档
 ```
 
-## 🚀 Advanced Features
+## 🚀 进阶使用
 
-### Using Better Translation APIs
+### 替换为更高质量的翻译 API
 
-You can replace the translation engine in `content.js`:
+在 `content.js` 中替换翻译引擎：
 
-**DeepL API** (higher quality):
+**DeepL API**（翻译质量更高）:
 ```javascript
 const url = 'https://api-free.deepl.com/v2/translate';
-// See DeepL documentation for implementation
+// 参考 DeepL 文档实现
 ```
 
-**OpenAI API** (context-aware):
+**OpenAI API**（上下文感知）:
 ```javascript
 const url = 'https://api.openai.com/v1/chat/completions';
-// See OpenAI documentation for implementation
+// 参考 OpenAI 文档实现
 ```
 
-### Local Translation Model (Offline)
+### 本地翻译模型（离线使用）
 
-Use Transformers.js to run models in the browser:
+使用 Transformers.js 在浏览器中运行本地模型：
 ```javascript
 import { pipeline } from '@xenova/transformers';
 const translator = await pipeline('translation', 'Xenova/nllb-200-distilled-600M');
 ```
 
-## ⚠️ Notes
+## ⚠️ 注意事项
 
-1. **Subtitles Required**
-   - The video must have subtitles (auto-generated or uploaded)
-   - The extension cannot work without subtitles
+1. **必须有字幕**
+   - 视频必须有字幕（自动生成或上传）
+   - 无字幕时扩展无法工作
 
-2. **Network Requirements**
-   - Requires access to Google Translate API
-   - May need proxy configuration in restricted regions
+2. **网络要求**
+   - 需要能访问 Google Translate API
+   - 部分地区可能需要代理
 
-3. **Performance Impact**
-   - Translation consumes some network and CPU resources
-   - Caching mechanism reduces redundant translations
+3. **性能影响**
+   - 翻译会消耗少量网络和 CPU 资源
+   - 缓存机制可减少重复翻译
 
-## 🐛 Troubleshooting
+## 🐛 常见问题
 
-### Translation not showing
-1. Check if the video has subtitles
-2. Confirm subtitles are enabled (CC button)
-3. Refresh the page and try again
-4. Check browser console for errors
+### 翻译不显示
+1. 检查视频是否有字幕
+2. 确认字幕已开启（CC 按钮）
+3. 刷新页面重试
+4. 检查浏览器控制台错误
 
-### Translation delay
-1. Check network connection
-2. Clear browser cache
-3. Consider using a faster translation API
+### 翻译延迟
+1. 检查网络连接
+2. 清除浏览器缓存
+3. 考虑使用更快的翻译 API
 
-### Styling issues
-1. YouTube may have updated its interface
-2. CSS selectors may need updating
-3. Please submit an issue for feedback
+### 样式问题
+1. YouTube 可能更新了界面
+2. 可能需要更新 CSS 选择器
+3. 欢迎提交 Issue 反馈
 
-## 📄 License
+## 📄 开源协议
 
 MIT License
 
-## 🤝 Contributing
+## 🤝 贡献
 
-Contributions are welcome! Please feel free to submit issues and pull requests.
+欢迎提交 Issue 和 Pull Request！
 
-## 📧 Contact
+## 📧 联系方式
 
-For questions or suggestions, please open an issue on GitHub.
+有问题或建议请在 GitHub 上提 Issue。
 
 ---
 
-**Enjoy barrier-free YouTube viewing!** 🎉
-
-## 🙏 Credits
-
-Developed by orangebot 🍊 with OpenClaw
+**祝你无障碍享受 YouTube！** 🎉
