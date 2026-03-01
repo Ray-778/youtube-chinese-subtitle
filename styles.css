@@ -1,0 +1,25 @@
+/* YouTube 实时字幕翻译 - 样式 */
+
+#yt-trans-container {
+  position: absolute;
+  z-index: 9999;
+  display: none;
+  pointer-events: none;
+
+  /* 水平居中：left 由 JS 设为文字中心点，translateX(-50%) 实现居中 */
+  transform: translateX(-50%);
+
+  /* 文本样式 */
+  text-align: center;
+  padding: 4px 10px;
+  color: #FFFF00;
+  background-color: rgba(8, 8, 8, 0.75);
+  border-radius: 3px;
+  line-height: 1.4;
+  white-space: pre-wrap;
+  max-width: 80%;
+
+  /* font-size 由 JS 动态同步原始字幕大小 */
+  font-family: "YouTube Noto", Roboto, "Arial Unicode Ms", Arial, Helvetica, Verdana, "PT Sans Caption", sans-serif;
+  font-weight: normal;
+}
